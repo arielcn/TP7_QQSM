@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Player";
+}
+
+<body class="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="./../delMoro.jpg" alt="Santiago Del Moro" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" action='@Url.Action("Jugar, Home")'>
+                    <div class="form-group">
+                        <h1 class="text-white">Ingresá tu nombre</h1>
+                        <input type="text" class="form-control" name="nombre">
+                        <button class="btn btn-primary mt-2" href='@Url.Action("Pregunta", "Home")' type="submit" value="Guardar">
+                            Ingresar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
