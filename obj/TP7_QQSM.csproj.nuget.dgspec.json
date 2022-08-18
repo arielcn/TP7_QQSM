@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj": {}
+    "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj": {
+    "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj",
+        "projectUniqueName": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj",
         "projectName": "TP7_QQSM",
-        "projectPath": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj",
+        "projectPath": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj",
         "packagesPath": "C:\\Users\\46914677\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\obj\\",
+        "outputPath": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

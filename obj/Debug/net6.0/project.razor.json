@@ -16298,6 +16298,11 @@
   "RootNamespace": "TP7_QQSM",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\_ViewImports.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\Views\\Home\\RespuestapreguntaOk.cshtml",
       "TargetPath": "Views\\Home\\RespuestapreguntaOk.cshtml",
       "FileKind": "mvc"
@@ -16323,8 +16328,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\Index.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\Pregunta.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\Pregunta.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16338,8 +16358,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\RespuestapreguntaOk.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\RespuestapreguntaOk.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\Player.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\Player.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\_ViewStart.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16348,8 +16383,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\Views\\Home\\Player.cshtml",
       "TargetPath": "Views\\Home\\Player.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM\\Views\\Home\\PantallaFindelJuego.cshtml",
+      "TargetPath": "TP7_QQSM\\Views\\Home\\PantallaFindelJuego.cshtml",
       "FileKind": "mvc"
     }
   ],

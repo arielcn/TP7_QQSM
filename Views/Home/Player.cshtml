@@ -5,17 +5,17 @@
 <body class="body">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <img src="./../delMoro.jpg" alt="Santiago Del Moro" width="100%">
+            <div class="col-md-12 text-center">
+                <img src="./../delMoro.jpg" alt="Santiago Del Moro" width="90%">
             </div>
         </div>
+        <hr class="my-4">
         <div class="row">
-            <div class="col-md-12">
-                <form method="post" action='@Url.Action("Jugar, Home")'>
+            <div class="col-sm-12">
+                <form method="post" action='@Url.Action("Pregunta", "Home")'>
                     <div class="form-group">
-                        <h1 class="text-white">Ingresá tu nombre</h1>
-                        <input type="text" class="form-control" name="nombre">
-                        <button class="btn btn-primary mt-2" href='@Url.Action("Pregunta", "Home")' type="submit" value="Guardar">
+                        <input type="text" class="form-control" name="nombre" placeholder="Tu nombre">
+                        <button class="btn btn-primary mt-2" type="submit" value="Guardar">
                             Ingresar
                         </button>
                     </div>
