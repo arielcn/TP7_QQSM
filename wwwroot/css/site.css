@@ -72,3 +72,26 @@ body {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
  }
+
+ .containerPreg{
+  width: 100%;
+  overflow: hidden;
+  background: skyblue;
+  margin: 20px auto;
+  padding: 20px;
+ }
+
+ .containerPreg ul{
+  padding: 0px;
+  margin: 0px;
+ }
+ .containerPreg ul li{
+  list-style: none;
+  float: left;
+  width: 40%;
+  height: 300px;
+  background: red;
+  margin: 40px 40px 0px 55px;
+  border: border-box;
+  border: 4px solid white;
+ }
