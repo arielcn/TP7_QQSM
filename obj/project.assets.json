@@ -9,22 +9,23 @@
   },
   "packageFolders": {
     "C:\\Users\\46914677\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj",
+      "projectUniqueName": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj",
       "projectName": "TP7_QQSM",
-      "projectPath": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\TP7_QQSM.csproj",
+      "projectPath": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\TP7_QQSM.csproj",
       "packagesPath": "C:\\Users\\46914677\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\46914677\\Downloads\\TP7_QQSM\\obj\\",
+      "outputPath": "C:\\Users\\46914677\\Desktop\\TP7_QQSM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\46914677\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -67,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
