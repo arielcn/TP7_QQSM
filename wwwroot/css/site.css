@@ -76,27 +76,94 @@ body {
 .general{
   margin: auto;
   margin-top: 50px;
-  width: 960px;
-  height: 800px;
-  background-color: rebeccapurple;
+  width: 100%;
+  height: 700px;
 }
 
 .pozo{
   float: right;
-  width: 300px;
+  width: 30%;
   height: 100%;
   background-color: aliceblue;
 }
 
 .comodin{
-  width: 640px;
+  width: 70%;
   height: 200px;
-  background-color: firebrick;
+  background-color: #fff;
 }
 
+.btnComodin{
+  background-color: #fff;
+}
+
+
 .pregunta{
-  margin-top: 100px;
-  width: 640px;
-  height: 200px;
+  margin-top: 70px;
+  width: 70%;
+  height: auto;
   background-color: aquamarine;
 }
+
+.pregunta h1
+{
+  margin-bottom: 18px;
+}
+
+.pregunta ul li button {
+  width: 100%;
+  margin-top: 2px;
+}
+
+.acciones{
+  background-color: antiquewhite;
+  text-align: center;
+  height: 200px;
+}
+
+.acciones button{
+  height: 120px;
+  width: 30%;
+  margin-top: 45px;
+  padding: 5px;
+}
+
+/* From uiverse.io by @alexroumi */
+.opcion {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .opcion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .opcion:hover {
+  color: #e8e8e8;
+ }
+ 
+ .opcion:hover::before {
+  width: 100%;
+ }
