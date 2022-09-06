@@ -24,6 +24,65 @@ body {
   background-attachment: fixed;
 }
 
+.general {
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+.pozo {
+  float: right;
+  width: 30%;
+  height: auto;
+}
+
+.pozo ul li{
+  background-color: yellow;
+  text-align: center;
+  list-style: none;
+}
+
+.comodin {
+  width: 70%;
+  height: auto;
+  text-align: center;
+  margin: 2%;
+}
+
+.comodin button{
+  width: 30%;
+  height: 60px;
+}
+
+.pregunta {
+  width: 70%;
+  height: auto;
+  float: left;
+}
+
+.pregunta h1 {
+  margin-bottom: 18px;
+  background-color: white;
+}
+
+.pregunta ul li button {
+  width: 100%;
+  margin-top: 2px;
+}
+
+.acciones {
+  text-align: center;
+  height: auto;
+}
+
+.acciones button {
+  height: 120px;
+  width: 30%;
+  margin-top: 45px;
+  padding: 5px;
+}
+
+
 /* From uiverse.io */
 .btnInicio {
   position: relative;
@@ -39,19 +98,19 @@ body {
   font-weight: 500;
   color: black;
   background-color: white;
- }
- 
- .btnInicio:hover {
+}
+
+.btnInicio:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
- }
- 
- .btnInicio:active {
+}
+
+.btnInicio:active {
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
- }
- 
- .btnInicio::after {
+}
+
+.btnInicio::after {
   content: "";
   display: inline-block;
   height: 100%;
@@ -62,70 +121,15 @@ body {
   left: 0;
   z-index: -1;
   transition: all .4s;
- }
- 
- .btnInicio::after {
+}
+
+.btnInicio::after {
   background-color: #fff;
- }
- 
- .btnInicio:hover::after {
+}
+
+.btnInicio:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
- }
-
-.general{
-  margin: auto;
-  margin-top: 50px;
-  width: 100%;
-  height: 700px;
-}
-
-.pozo{
-  float: right;
-  width: 30%;
-  height: 100%;
-  background-color: aliceblue;
-}
-
-.comodin{
-  width: 70%;
-  height: 200px;
-  background-color: #fff;
-}
-
-.btnComodin{
-  background-color: #fff;
-}
-
-
-.pregunta{
-  margin-top: 70px;
-  width: 70%;
-  height: auto;
-  background-color: aquamarine;
-}
-
-.pregunta h1
-{
-  margin-bottom: 18px;
-}
-
-.pregunta ul li button {
-  width: 100%;
-  margin-top: 2px;
-}
-
-.acciones{
-  background-color: antiquewhite;
-  text-align: center;
-  height: 200px;
-}
-
-.acciones button{
-  height: 120px;
-  width: 30%;
-  margin-top: 45px;
-  padding: 5px;
 }
 
 /* From uiverse.io by @alexroumi */
@@ -139,13 +143,13 @@ body {
   position: relative;
   font-weight: 1000;
   font-size: 17px;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
   overflow: hidden;
- }
- 
- .opcion::before {
+}
+
+.opcion::before {
   content: "";
   position: absolute;
   top: 0;
@@ -155,15 +159,15 @@ body {
   border-radius: 15px;
   background-color: #212121;
   z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms
- }
- 
- .opcion:hover {
+}
+
+.opcion:hover {
   color: #e8e8e8;
- }
- 
- .opcion:hover::before {
+}
+
+.opcion:hover::before {
   width: 100%;
- }
+}
