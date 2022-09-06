@@ -41,7 +41,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Jugar(string nombre)
     {
-        JuegoQQSM.IniciarJuego(nombre);
+        JuegoQQSM.iniciarJuego(nombre);
         ViewBag.PreguntaActual = JuegoQQSM.ObtenerProximaPregunta();
         ViewBag.RespuestaActual = JuegoQQSM.ObtenerRespuestas();
         ViewBag.Player = JuegoQQSM.DevolverJugador();

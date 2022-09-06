@@ -12,20 +12,23 @@ using Dapper;
 namespace TP7_QQSM.Models
 {
 
-    public class JuegoQQSM
+    public static class JuegoQQSM
     {
         private static string _connectionString = @"Server = A-LUM-08; DataBase=Qatar22;Trusted_Connection=True;";
-        private int _preguntaActual;
-        private char _respuestaCorrectaActual;
-        private int _posicionPozo;
-        private int _pozoAcumuladoSeguro;
-        private int _pozoAcumulado;
-        private bool _comodin5050, _comodinDobleChance, _comodinSaltearPregunta;
-        private List<Pozo> _listaPozo = new List<Pozo>();
-        private Jugadores _player;
+        private static int _preguntaActual;
+        private static char _respuestaCorrectaActual;
+        private static int _posicionPozo;
+        private static int _pozoAcumuladoSeguro;
+        private static int _pozoAcumulado;
+        private static bool _comodin5050, _comodinDobleChance, _comodinSaltearPregunta;
+        private static List<Pozo> _listaPozo = new List<Pozo>();
+        private static List<Respuestas> _listaRespuestas = new List<Respuestas>();
+        private static List<int> _listaPregsRespondidas = new List<int>();
+        private static Jugadores _player;
 
-        public void iniciarJuego(string Nombre)
+        public static void iniciarJuego(string Nombre)
         {
+            DateTime FechaHora = DateTime.Now;
             _preguntaActual = 0;
             _respuestaCorrectaActual = '\0';//es un null más fachero hecho por alberinfohdyoutube//;
             _posicionPozo = 0;
@@ -35,7 +38,6 @@ namespace TP7_QQSM.Models
             _comodinDobleChance = true;
             _comodinSaltearPregunta = true;
             List<Pozo> _listaPozo = new List<Pozo>();
-            List<Respondidas> _listaPregsRespondidas = new List<Respondidas>();
             _listaPozo.Add(new Pozo(2000, false));
             _listaPozo.Add(new Pozo(5000, false));
             _listaPozo.Add(new Pozo(10000, false));
@@ -51,18 +53,17 @@ namespace TP7_QQSM.Models
             _listaPozo.Add(new Pozo(750000, false));
             _listaPozo.Add(new Pozo(1000000, false));
             _listaPozo.Add(new Pozo(2000000, true));
-            _player = new Jugadores(0, _respuestaCorrectaActual, _posicionPozo, _pozoAcumulado, _comodin5050, _comodinDobleChance, _comodinSaltearPregunta);
 
             string sql = "INSERT INTO Jugadores(nombre, fechaHora, pozoGanado, comodinDobleChance, comodin50, comodinSaltear) VALUES(@_nombre, @_fechaHora, @_pozoGanado, @_comodinDobleChance, @_comodin50, @_comdinSaltear)";
 
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                db.execute(sql, new { _nombre = _player.nombre, _fechaHora = _player.fechaHora, _pozoGanado = _player.pozoGanado, _comodinDobleChance = _player.comidinDobleChance, _comodin50 = _player.comodin50, _comodinSaltear = _player.comodinSaltear });
+                db.Execute(sql, new { @_nombre = Nombre, @_fechaHora = FechaHora, @_pozoGanado = 0, @_comodinDobleChance = true, @_comodin50 = true, @_comodinSaltear = true });
             }
-            return _player;
+            _player = DevolverJugador();
         }
 
-        public Pregunta obtenerProximaPregunta()
+        public static Pregunta obtenerProximaPregunta()
         {
             _preguntaActual++;
             Pregunta preguntaActual = null;
@@ -74,30 +75,29 @@ namespace TP7_QQSM.Models
             return preguntaActual;
         }
 
-        public List<Respuestas> ObtenerRespuestas()
+        public static List<Respuestas> ObtenerRespuestas()
         {
-            List<Respuesta> ListaRespuestas = new List<Respuesta>();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 string sql = "SELECT textoRespuesta from Respuestas where idPregunta = @_preguntaActual";
-                ListaRespuestas = db.Query<Respuestas>(sql, new { pRespuestaCorrectaActual = _respuestaCorrectaActual }).ToList();
+                _listaRespuestas = db.Query<Respuestas>(sql, new { pRespuestaCorrectaActual = _respuestaCorrectaActual }).ToList();
             }
-            return ListaRespuestas;
+            return _listaRespuestas;
         }
 
-        public bool RespuestaUsuario(char Opcion, char OpcionComodin = ' ')
+        public static bool RespuestaUsuario(char Opcion, char OpcionComodin = ' ')
         {
             bool acerto = false;
             if (Opcion != null && OpcionComodin != null)
             {
                 string sql = "UDPATE Jugadores SET comodinDobleChance = false WHERE idJugador = @_idJugador";
-                db.execute;
+                db.Execute(sql, new { @_idJugador = _player.idJugador });
             }
             if (Opcion == _respuestaCorrectaActual)
             {
                 if (_listaPozo[_posicionPozo].valorSeguro == true)
                 {
-                    _pozoAcumuladoSeguro == _listaPozo[_posicionPozo].importe;
+                    _pozoAcumuladoSeguro = _listaPozo[_posicionPozo].importe;
                 }
                 _posicionPozo++;
 
@@ -121,28 +121,30 @@ namespace TP7_QQSM.Models
             if (_player.comodin50 == true)
             {
                 string sql = "UDPATE Jugadores SET comodin50 = false WHERE idJugador = @_idJugador";
-            }
-            int i = 0;
-            int pos = -1;
-            while(i < _ListaRespuestas[i].Count == true && pos == -1)
-            {
-                if(_ListaRespuestas[i]._correcta == true)
-                {
-                    pos = i;
-                }
-                else
-                {
-                    i++;
-                }
 
+                int i = 0;
+                int pos = -1;
+                while (i < _listaRespuestas.Count && pos == -1)
+                {
+                    if (_listaRespuestas[i].correcta == true)
+                    {
+                        pos = i;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+
+                }
             }
+            else return ' ';
 
 
         }
 
         public static void SaltearPregunta()
         {
-            int preguntaRandom = Random.next(Pregunta.Count);
+            int preguntaRandom = Random.Next(Pregunta.Count);
             if (_player._comodinSaltearPregunta == true)
             {
                 _listaPregsRespondidas.Add(preguntaActual);
@@ -159,10 +161,12 @@ namespace TP7_QQSM.Models
 
         public static Jugadores DevolverJugador()
         {
-            if (_pozoAcumulado == 200000 || _correcta == false)
+            using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                return _player;
+                string sql = "SELECT TOP 1 * FROM Jugadores ORDER BY IdJugador DESC";
+                db.QueryFirstOrDefault(sql);
             }
+            return _player;
         }
 
 
