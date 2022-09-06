@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.IO.Compression;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP7_QQSM.Models;
 using System;
@@ -31,25 +32,44 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Pregunta(){
+    public IActionResult Pregunta()
+    {
         return View();
     }
-  
-  /*
+
+
     [HttpGet]
-    IActionResult Jugar(string nombre)
+    public IActionResult Jugar(string nombre)
     {
+        JuegoQQSM.IniciarJuego(nombre);
+        ViewBag.PreguntaActual = JuegoQQSM.ObtenerProximaPregunta();
+        ViewBag.RespuestaActual = JuegoQQSM.ObtenerRespuestas();
+        ViewBag.Player = JuegoQQSM.DevolverJugador();
+        ViewBag.ListaPozo = JuegoQQSM.ListarPozo();
+        return View("Pregunta");
     }
 
-    
-    IActionResult PreguntaRespondida(char Opcion1, char Opcion2){
+
+    public IActionResult PreguntaRespondida(char Opcion1, char Opcion2)
+    {
+        ViewBag.RespuestaUsuario = Opcion1;
+        ViewBag.OpcionComodin = Opcion2;
+        if(JuegoQQSM.RespuestaUsuario(Opcion1, Opcion2) == true)
+        {
+            return View("RespuestapreguntaOk");
+
+        } 
+        else return View("PantallaFindelJuego");
 
     }
 
-    IActionResult FinDelJuego(){
-        
+    public IActionResult PantallaFindelJuego()
+    {
+        ViewBag.infoPlayer = JuegoQQSM.DevolverJugador();
+        ViewBag.pozoGanado = JuegoQQSM.ListarPozo();
+        return View();
     }
-    */
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
