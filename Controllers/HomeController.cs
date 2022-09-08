@@ -34,39 +34,43 @@ public class HomeController : Controller
     }
     public IActionResult Pregunta()
     {
+        ViewBag.PreguntaActual = JuegoQQSM.obtenerProximaPregunta();
+        ViewBag.ListaRespuestas = JuegoQQSM.ObtenerRespuestas();
+        ViewBag.Player = JuegoQQSM.DevolverJugador();
+        ViewBag.ListaPozo = JuegoQQSM.listarPozo();
         return View();
     }
 
 
-    [HttpGet]
+    [HttpPost]
     public IActionResult Jugar(string nombre)
     {
         JuegoQQSM.iniciarJuego(nombre);
-        ViewBag.PreguntaActual = JuegoQQSM.ObtenerProximaPregunta();
-        ViewBag.RespuestaActual = JuegoQQSM.ObtenerRespuestas();
+        ViewBag.PreguntaActual = JuegoQQSM.obtenerProximaPregunta();
+        ViewBag.ListaRespuestas = JuegoQQSM.ObtenerRespuestas();
         ViewBag.Player = JuegoQQSM.DevolverJugador();
-        ViewBag.ListaPozo = JuegoQQSM.ListarPozo();
+        ViewBag.ListaPozo = JuegoQQSM.listarPozo();
         return View("Pregunta");
     }
 
 
-    public IActionResult PreguntaRespondida(char Opcion1, char Opcion2)
+    public IActionResult PreguntaRespondida(char Opcion, char OpcionComodin = ' ')
     {
-        ViewBag.RespuestaUsuario = Opcion1;
-        ViewBag.OpcionComodin = Opcion2;
-        if(JuegoQQSM.RespuestaUsuario(Opcion1, Opcion2) == true)
+        ViewBag.RespuestaUsuario = Opcion;
+        ViewBag.OpcionComodin = OpcionComodin;
+        if(JuegoQQSM.RespuestaUsuario(Opcion, OpcionComodin) == true)
         {
             return View("RespuestapreguntaOk");
 
         } 
-        else return View("PantallaFindelJuego");
+        else return View("PantallaFindelJuego");  
 
     }
 
     public IActionResult PantallaFindelJuego()
     {
         ViewBag.infoPlayer = JuegoQQSM.DevolverJugador();
-        ViewBag.pozoGanado = JuegoQQSM.ListarPozo();
+        ViewBag.pozoGanado = JuegoQQSM.listarPozo();
         return View();
     }
 

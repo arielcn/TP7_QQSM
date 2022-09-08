@@ -78,10 +78,14 @@ body {
 .acciones button {
   height: 120px;
   width: 30%;
-  margin-top: 45px;
-  padding: 5px;
 }
 
+.respOk {
+  background-color: #fff;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 5%;
+  text-align: center;
+}
 
 /* From uiverse.io */
 .btnInicio {

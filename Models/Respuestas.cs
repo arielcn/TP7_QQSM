@@ -13,7 +13,7 @@ namespace TP7_QQSM.Models
             _idRespuestas = 0;
             _idPregunta = 0;
             _opcionRespuesta = ' ';
-            _textoRespuesta = null;
+            _textoRespuesta = "";
             _correcta = false;
         }
 

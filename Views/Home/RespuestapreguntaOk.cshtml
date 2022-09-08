@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Player";
+}
+
+<body class="body">
+    <div class="container-fluid" style="margin-top: 20%;">
+        <h1 class="respOk">¡¡CORRECTA!!</h1>
+        <div class="acciones">
+            <button class="btn btn-success">SIGUIENTE @ViewBag.obtenerProximaPregunta</button>
+            <a href='@Url.Action("PantallaFindelJuego", "Home")'>
+                <button class="btn btn-danger">PLANTARSE @ViewBag.PantallaFindelJuego</button>
+            </a>
+        </div>
+    </div>
+</body>

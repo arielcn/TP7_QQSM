@@ -12,7 +12,7 @@ namespace TP7_QQSM.Models
         public Jugadores(int idJugador, string nombre, DateTime fechaHora, int pozoGanado, bool comodinDobleChance, bool comodin50, bool comodinSaltear)
         {
             _idJugador = 0;
-            _nombre = null;
+            _nombre = "";
             _fechaHora = DateTime.Now;
             _pozoGanado = 0;
             _comodinDobleChance = false;

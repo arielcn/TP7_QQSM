@@ -9,7 +9,7 @@ namespace TP7_QQSM.Models
         public Pregunta(int idPregunta, string textoPregunta, int nivelDificultad)
         {
             _idPregunta = 0;
-            _textoPregunta = null;
+            _textoPregunta = "";
             _nivelDificultad = 0;
         }
 

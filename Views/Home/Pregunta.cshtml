@@ -8,17 +8,23 @@
             <img src="./../delMoro.jpg" width="30%" height="200px" style="float: right;">
             <div class="general">
                 <div class="comodin">
-                    <button class="btn btn-primary">50/50</button>
-                    <button class="btn btn-primary">2ble Chance</button>
-                    <button class="btn btn-primary">Saltear</button>
+                    <button class="btn btn-primary">COMODIN 50/50</button>
+                    <button class="btn btn-primary">DOBLE CHANCE</button>
+                    <button class="btn btn-primary">SALTEAR PREGUNTA</button>
                 </div>
                 <div class="pregunta text-center">
-                    <h1>Pregunta</h1>
+                    <h1>@ViewBag.PreguntaActual.textoPregunta</h1>
                     <ul style="list-style: none; margin-right: 30px;">
-                        <li><button class="opcion">OPCION 1</button></li>
-                        <li><button class="opcion">OPCION 2</button></li>
-                        <li><button class="opcion">OPCION 3</button></li>
-                        <li><button class="opcion">OPCION 4</button></li>
+                        @{
+                            foreach (Respuestas item in ViewBag.ListaRespuestas)
+                            {
+                                <li>
+                                    <a href='@Url.Action("PreguntaRespondida", "Home", new {Opcion = item.opcionRespuesta})'>
+                                        <button class="opcion">@item.textoRespuesta</button>
+                                    </a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
                 <div class="pozo">
@@ -36,14 +42,7 @@
                         <li>$---.---</li>
                     </ul>
                 </div>
-                <div class="acciones">
-                    <button class="btn btn-success">SIGUIENTE</button>
-                    <a href='@Url.Action("PantallaFindelJuego", "Home")'>
-                        <button class="btn btn-danger">PLANTARSE</button>
-                    </a>
-                </div>
             </div>
-
         </div>
     </div>
 </body>

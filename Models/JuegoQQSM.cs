@@ -14,7 +14,7 @@ namespace TP7_QQSM.Models
 
     public static class JuegoQQSM
     {
-        private static string _connectionString = @"Server = A-LUM-08; DataBase=Qatar22;Trusted_Connection=True;";
+        private static string _connectionString = @"Server = A-PHZ2-CIDI-036; DataBase=JuegoQQSM;Trusted_Connection=True;";
         private static int _preguntaActual;
         private static char _respuestaCorrectaActual;
         private static int _posicionPozo;
@@ -37,7 +37,6 @@ namespace TP7_QQSM.Models
             _comodin5050 = true;
             _comodinDobleChance = true;
             _comodinSaltearPregunta = true;
-            List<Pozo> _listaPozo = new List<Pozo>();
             _listaPozo.Add(new Pozo(2000, false));
             _listaPozo.Add(new Pozo(5000, false));
             _listaPozo.Add(new Pozo(10000, false));
@@ -54,7 +53,7 @@ namespace TP7_QQSM.Models
             _listaPozo.Add(new Pozo(1000000, false));
             _listaPozo.Add(new Pozo(2000000, true));
 
-            string sql = "INSERT INTO Jugadores(nombre, fechaHora, pozoGanado, comodinDobleChance, comodin50, comodinSaltear) VALUES(@_nombre, @_fechaHora, @_pozoGanado, @_comodinDobleChance, @_comodin50, @_comdinSaltear)";
+            string sql = "INSERT INTO Jugadores(nombre, fechaHora, pozoGanado, comodinDobleChance, comodin50, comodinSaltear) VALUES(@_nombre, @_fechaHora, @_pozoGanado, @_comodinDobleChance, @_comodin50, @_comodinSaltear)";
 
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
@@ -65,22 +64,30 @@ namespace TP7_QQSM.Models
 
         public static Pregunta obtenerProximaPregunta()
         {
-            _preguntaActual++;
-            Pregunta preguntaActual = null;
+            Random rand = new Random();
+            int num = rand.Next(0, 5);
+            int nivelDificultad = 1;
+            if (_posicionPozo > 5 && _posicionPozo <= 10)
+            {
+                nivelDificultad = 2;
+            }
+            else if (_posicionPozo > 10) nivelDificultad = 3;
+            List<Pregunta> listaPreguntasXDif = new List<Pregunta>();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT * FROM Preguntas WHERE idPregunta = @pPreguntaActual";
-                preguntaActual = db.QueryFirstOrDefault(sql, new { pPreguntaActual = _preguntaActual });
+                string sql = "SELECT * FROM Preguntas WHERE nivelDificultad = @nivelDificultad";
+                listaPreguntasXDif = db.Query<Pregunta>(sql, new { @nivelDificultad = nivelDificultad }).ToList();
             }
-            return preguntaActual;
+            _preguntaActual = listaPreguntasXDif[num].idPregunta;
+            return listaPreguntasXDif[num];
         }
 
         public static List<Respuestas> ObtenerRespuestas()
         {
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT textoRespuesta from Respuestas where idPregunta = @_preguntaActual";
-                _listaRespuestas = db.Query<Respuestas>(sql, new { pRespuestaCorrectaActual = _respuestaCorrectaActual }).ToList();
+                string sql = "SELECT textoRespuesta from Respuestas where idPregunta = @preguntaActual";
+                _listaRespuestas = db.Query<Respuestas>(sql, new { @preguntaActual = _preguntaActual }).ToList();
             }
             return _listaRespuestas;
         }
@@ -88,12 +95,16 @@ namespace TP7_QQSM.Models
         public static bool RespuestaUsuario(char Opcion, char OpcionComodin = ' ')
         {
             bool acerto = false;
-            if (Opcion != null && OpcionComodin != null)
+            if (OpcionComodin != ' ')
             {
-                string sql = "UDPATE Jugadores SET comodinDobleChance = false WHERE idJugador = @_idJugador";
-                db.Execute(sql, new { @_idJugador = _player.idJugador });
+                using (SqlConnection db = new SqlConnection(_connectionString))
+                {
+                    string sql = "UDPATE Jugadores SET comodinDobleChance = false WHERE idJugador = (select top 1 idJugador from Jugadores order by idJugador desc)";
+                    db.Execute(sql);
+                }
+
             }
-            if (Opcion == _respuestaCorrectaActual)
+            if (Opcion == _respuestaCorrectaActual || OpcionComodin == _respuestaCorrectaActual)
             {
                 if (_listaPozo[_posicionPozo].valorSeguro == true)
                 {
@@ -116,44 +127,48 @@ namespace TP7_QQSM.Models
             return _posicionPozo;
         }
 
-        public static char Descartar50()
+        public static char[] Descartar50()
         {
             if (_player.comodin50 == true)
             {
-                string sql = "UDPATE Jugadores SET comodin50 = false WHERE idJugador = @_idJugador";
-
-                int i = 0;
-                int pos = -1;
-                while (i < _listaRespuestas.Count && pos == -1)
+                char[] VecIncorrectas = new char[2];
+                using (SqlConnection db = new SqlConnection(_connectionString))
                 {
-                    if (_listaRespuestas[i].correcta == true)
+                    string sql = "UDPATE Jugadores SET comodin50 = false WHERE idJugador = (select top 1 idJugador from Jugadores order by idJugador desc)";
+                    db.Execute(sql);
+                }
+                int i = 0;
+                int n = 0;
+                while (i < _listaRespuestas.Count && n < VecIncorrectas.Length)
+                {
+                    if (_listaRespuestas[i].opcionRespuesta != _respuestaCorrectaActual)
                     {
-                        pos = i;
+                        VecIncorrectas[n] = _listaRespuestas[i].opcionRespuesta;
+                        n++;
                     }
                     else
                     {
                         i++;
                     }
-
                 }
+                return VecIncorrectas;
             }
-            else return ' ';
-
-
+            else return null;
         }
 
         public static void SaltearPregunta()
         {
-            int preguntaRandom = Random.Next(Pregunta.Count);
-            if (_player._comodinSaltearPregunta == true)
+            Random rand = new Random();
+            int num = rand.Next(1, 17);
+            _preguntaActual = num;
+            if (_player.comodinSaltear == true)
             {
-                _listaPregsRespondidas.Add(preguntaActual);
+                _listaPregsRespondidas.Add(_preguntaActual);
                 using (SqlConnection db = new SqlConnection(_connectionString))
                 {
-                    string sql = "UPDATE Jugadores SET comodin50 = false WHERE idJugador = @_idJugador";
-                    db.execute(sql, new { @idJugador = _player.idJugador });
+                    string sql = "UPDATE Jugadores SET comodinSaltear = false WHERE idJugador = (select top 1 idJugador from Jugadores order by idJugador desc)";
+                    db.Execute(sql);
                 }
-                preguntaActual = preguntaRandom; //verificar, dudoso//
             }
 
 
